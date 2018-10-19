@@ -11,6 +11,8 @@ const {
   server_root_path
 } = require('../../.config')
 
+console.log('coucou')
+
 module.exports = async bundleData => {
 
   // Define a process id, and create a destination folder
