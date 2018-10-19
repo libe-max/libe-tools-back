@@ -16,9 +16,10 @@ module.exports = async bundleData => {
   // Define a process id, and create a destination folder
   // in the temp directory of the server
   const processId = `${moment().format('YYMMDD-HHmmss-SSS')}-${uuid()}`
-  const server_root_path = path.join(__dirname, `../../`)
-  const outputDir = path.join(`temp/${processId}`)
+  const outputDir = `temp/${processId}`
+  const absoluteTempDir = path.join(server_root_path, 'temp')
   const absoluteOutputDir = path.join(server_root_path, outputDir)
+  if (!fs.existsSync(absoluteTempDir)) fs.mkdirSync(absoluteTempDir)
   fs.mkdirSync(absoluteOutputDir)
 
   // Gather template files in variables in order to copy
