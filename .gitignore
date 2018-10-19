@@ -3,7 +3,6 @@ node_modules/
 data/
 client/
 temp/
-.DS_Store
 
 ### Linux ###
 *~
