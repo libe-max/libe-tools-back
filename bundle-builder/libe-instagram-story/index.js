@@ -11,6 +11,8 @@ const {
   server_root_path
 } = require('../../.config')
 
+console.log('tututu')
+
 module.exports = async bundleData => {
 
   // Define a process id, and create a destination folder
