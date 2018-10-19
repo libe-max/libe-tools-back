@@ -11,7 +11,7 @@ const {
   server_root_path
 } = require('../../.config')
 
-console.log('test')
+console.log('tut tut')
 
 module.exports = async bundleData => {
 
