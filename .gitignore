@@ -1,7 +1,6 @@
 ### This app ###
 node_modules/
 data/
-client/
 temp/
 .DS_Store
 
