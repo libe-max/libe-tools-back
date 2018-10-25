@@ -5,20 +5,16 @@ const rimraf = require('rimraf')
 const fs = require('fs')
 const path = require('path')
 const uuid = require('uuid')
+const config = require('../../.config')
 const { getBundleCurrentSettings } = require('../../utils/bundles')
-const {
-  server_local_root_url,
-  server_root_path
-} = require('../../.config')
 
 module.exports = async bundleData => {
-
   // Define a process id, and create a destination folder
   // in the temp directory of the server
   const processId = `${uuid()}`
   const outputDir = `temp/${processId}`
-  const absoluteTempDir = path.join(server_root_path, 'temp')
-  const absoluteOutputDir = path.join(server_root_path, outputDir)
+  const absoluteTempDir = path.join(config.server_root_path, 'temp')
+  const absoluteOutputDir = path.join(config.server_root_path, outputDir)
   if (!fs.existsSync(absoluteTempDir)) fs.mkdirSync(absoluteTempDir)
   fs.mkdirSync(absoluteOutputDir)
 
@@ -40,17 +36,11 @@ module.exports = async bundleData => {
 
   // Gather story settings, then, for each slide of the
   // story, fill the template and make a screenshot
-  const bundleId = bundleData._id
-  const bundleType = bundleData.type
   const bundleSettings = getBundleCurrentSettings(bundleData)
-  const bundleName = bundleSettings.name
-  const bundleAuthor = bundleSettings.author
   const bundleSlides = bundleSettings.slides
   const processingSlides = bundleSlides.map(async (slideData, i) => {
-
     // Shortcuts of useful spots in template
     const $ = cheerio.load(templateHtml)
-    const $head = $('head')
     const $slide = $('.libe-insta-slide')
     const $titles = $('[data-property="title"]')
     const $texts = $('[data-property="text"]')
@@ -66,7 +56,7 @@ module.exports = async bundleData => {
     if (text) $texts.html(text.value)
     if (image) $images.html(`<img src="${image.src}">`)
     if (backgroundImages) {
-      const bgImgHeight = `${100 / (backgroundImages.length || 1)}%`
+      const bgImgHeight = `${100 / (backgroundImages.length || 1)}%`
       $backgroundImages.html(backgroundImages.map(bgImg => {
         const node = cheerio.load('<div></div>')
         node('div').addClass('libe-insta-slide__background-image')
@@ -85,15 +75,15 @@ module.exports = async bundleData => {
     const outputTemplateHtml = `${outputTemplateDir}/index.html`
     const outputTemplateCss = `${outputTemplateDir}/style.css`
     const outputTemplateAssetsDir = `${outputTemplateDir}/assets`
-    fs.mkdirSync(path.join(server_root_path, outputTemplateDir))
-    fs.writeFileSync(path.join(server_root_path, outputTemplateHtml), $.html())
-    fs.writeFileSync(path.join(server_root_path, outputTemplateCss), templateCss)
-    fs.mkdirSync(path.join(server_root_path, outputTemplateAssetsDir))
+    fs.mkdirSync(path.join(config.server_root_path, outputTemplateDir))
+    fs.writeFileSync(path.join(config.server_root_path, outputTemplateHtml), $.html())
+    fs.writeFileSync(path.join(config.server_root_path, outputTemplateCss), templateCss)
+    fs.mkdirSync(path.join(config.server_root_path, outputTemplateAssetsDir))
     await Promise.all(
       templateAssetsDir.map(file => new Promise((resolve, reject) => {
         const outputFileDest = `${outputTemplateAssetsDir}/${file.name}`
         const outputFile = fs.createWriteStream(
-          path.join(server_root_path, outputFileDest)
+          path.join(config.server_root_path, outputFileDest)
         )
         outputFile.on('close', () => resolve())
         outputFile.on('error', e => reject(e))
@@ -111,9 +101,9 @@ module.exports = async bundleData => {
     // overkill but it works.
 
     // Preparing the Webshot options
-    const input = `${server_local_root_url}/${outputTemplateHtml}`
+    const input = `${config.server_local_root_url}/${outputTemplateHtml}`
     const output = path.join(
-      server_root_path,
+      config.server_root_path,
       `${outputDir}/${i}.png`
     )
     const options = {
@@ -132,7 +122,7 @@ module.exports = async bundleData => {
     })
 
     // Produce the image
-    return await webshotPromise(
+    return webshotPromise(
       input,
       output,
       options
@@ -140,7 +130,7 @@ module.exports = async bundleData => {
   })
 
   const screenshots = await Promise.all(processingSlides)
-  
+
   // Zip the images
   const zip = new Zipper()
   screenshots.map((screenshotPath, i) => zip.file(

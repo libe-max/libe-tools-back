@@ -4,8 +4,10 @@ module.exports = async (bundleData) => {
   const { type } = bundleData
   switch (type) {
     case 'libe-instagram-story':
-      return await libeInstagramStory(bundleData)
+      return libeInstagramStory(bundleData)
     default:
-      throw `Unable to build bundles of type ${type}`
+      throw new Error({
+        message: `Unable to build bundles of type ${type}`
+      })
   }
 }
