@@ -5,7 +5,7 @@
   "author": "Maxime Fabas <maxime.fabas@pm.me> (https://maximefabas.github.com)",
   "scripts": {
     "start": "nodemon ./bin/www --ignore './temp'",
-    "start-prod": "NODE_ENV=production node ./bin/www",
+    "serve": "NODE_ENV=production node ./bin/www",
     "standard": "standard --verbose | snazzy",
     "standard-fix": "standard --fix --verbose | snazzy"
   },
