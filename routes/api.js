@@ -1,4 +1,5 @@
 const express = require('express')
+const moment = require('moment')
 const router = express.Router()
 const build = require('../bundle-builder/index')
 
@@ -44,7 +45,7 @@ router.all('/get-bundle/:id', (req, res, next) => {
 
 router.all('/create-bundle/:type', (req, res, next) => {
   const type = req.params.type
-  const now = Date.now()
+  const now = moment().valueOf()
   const collection = req.db.collection('bundles')
   const newBundle = {
     type,
@@ -65,7 +66,7 @@ router.all('/create-bundle/:type', (req, res, next) => {
 
 router.put('/save-bundle/:id', (req, res, next) => {
   const id = req.params.id
-  const now = Date.now()
+  const now = moment().valueOf()
   const collection = req.db.collection('bundles')
   const idIsValid = id.match(/^[0-9a-fA-F]{24}$/)
   const request = { $push: {
