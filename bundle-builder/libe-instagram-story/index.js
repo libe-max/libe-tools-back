@@ -1,10 +1,10 @@
 const cheerio = require('cheerio')
 const webshot = require('webshot')
 const Zipper = require('node-zip')
+const rimraf = require('rimraf')
 const fs = require('fs')
 const path = require('path')
 const uuid = require('uuid')
-const moment = require('moment')
 const { getBundleCurrentSettings } = require('../../utils/bundles')
 const {
   server_local_root_url,
@@ -15,7 +15,7 @@ module.exports = async bundleData => {
 
   // Define a process id, and create a destination folder
   // in the temp directory of the server
-  const processId = `${moment().format('YYMMDD-HHmmss-SSS')}-${uuid()}`
+  const processId = `${uuid()}`
   const outputDir = `temp/${processId}`
   const absoluteTempDir = path.join(server_root_path, 'temp')
   const absoluteOutputDir = path.join(server_root_path, outputDir)
@@ -55,13 +55,12 @@ module.exports = async bundleData => {
     const $titles = $('[data-property="title"]')
     const $texts = $('[data-property="text"]')
     const $images = $('[data-property="image"]')
-    const $backgroundImages = $('*[data-property="backgroundImages"]')
+    const $backgroundImages = $('*[data-property="background-images"]')
 
     // Slide data
     const { display, title, text, image, backgroundImages } = slideData
 
     // Fill template
-    $head.append(`<style>${templateCss}</style>`)
     $slide.addClass(`libe-insta-slide_${display}-display`)
     if (title) $titles.html(title.value)
     if (text) $texts.html(text.value)
@@ -158,6 +157,11 @@ module.exports = async bundleData => {
     zipped,
     'binary'
   )
+
+  // Remove the temp folder 10 seconds after returning it
+  setTimeout(() => {
+    rimraf(absoluteOutputDir, () => {})
+  }, 10000)
 
   return absoluteZipPath
 }

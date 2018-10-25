@@ -1,6 +1,7 @@
 html, body { padding: 0; margin: 0; }
 * { box-sizing: border-box; }
 
+/* Whole slide */
 .libe-insta-slide {
   position: relative;
   width: 1080px;
@@ -8,6 +9,7 @@ html, body { padding: 0; margin: 0; }
   background: white;
 }
 
+/* Background images */
 .libe-insta-slide__background-images {
   position: absolute;
   top: 0;
@@ -27,12 +29,22 @@ html, body { padding: 0; margin: 0; }
   background-repeat: no-repeat;
 }
 
+/* Safe zone */
+.libe-insta-slide__safe-zone {
+  overflow: hidden;
+  position: absolute;
+  top: 150px;
+  left: calc(50% - 390px);
+  width: 780px;
+  height: 1452px;
+}
+
+/* Icon signature */
 .libe-insta-slide__icon-signature {
   position: absolute;
-  transform: translate(-50% -50%);
-  top: 50%;
-  left: 50%;
-  width: 500px;
+  top: 1663px;
+  left: calc(50% - 75px);
+  width: 150px;
 }
 
 .libe-insta-slide__icon-signature img {
@@ -40,16 +52,249 @@ html, body { padding: 0; margin: 0; }
   height: auto;
 }
 
-.libe-insta-slide > * {
-  display: none;
+/* Icon title */
+.libe-insta-slide__icon-title {
+  overflow: hidden;
+  background-image: url('./assets/libe-icon.png');
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
-.libe-insta-slide > .libe-insta-slide__icon-signature {
-  display: block;
+.libe-insta-slide__icon-title span {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-family: 'Libe-Sans-Semicondensed', Helvetica, Arial, sans-serif;
+  font-size: 56px;
+  line-height: 56px;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-align: center;
 }
 
-/* States */
+/* Text panel */
+.libe-insta-slide__text-panel {
+  background: #FFFFFF;
+  padding: 24px;
+  font-family: 'Libe-Sans-Semicondensed', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 62px;
+  line-height: 72px;
+  font-style: normal;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #212121;
+  text-align: center;
+}
 
+.libe-insta-slide__text-panel_big {
+  font-size: 108px;
+  line-height: 108px;
+}
+
+/* Image */
+.libe-insta-slide__image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Label title */
+.libe-insta-slide__label-title {
+  padding: 12px;
+  padding-top: 18px;
+  background: #E4214B;
+  font-family: 'Libe-Sans-Semicondensed', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 50px;
+  font-style: normal;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+/* Paragraph */
+.libe-insta-slide__paragraph {
+  font-family: 'Libe-Sans', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 62px;
+  line-height: 71px;
+  font-style: normal;
+  letter-spacing: 0.03em;
+  text-transform: normal;
+  color: #212121;
+  text-align: center;
+}
+
+/* Quote */
+.libe-insta-slide__quote {
+  font-family: 'Libe-Sans-Semicondensed', Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 122px;
+  line-height: 142px;
+  font-style: normal;
+  letter-spacing: 0.03em;
+  text-transform: normal;
+  color: #212121;
+}
+
+/* Quote sign */
+.libe-insta-slide__quote-sign {
+  width: 360px;
+  opacity: 0.9;
+  mix-blend-mode: multiply;
+}
+
+.libe-insta-slide__quote-sign img {
+  width: 100%;
+  height: auto;
+}
+
+/* Quote author */
+.libe-insta-slide__quote-author {
+  font-family: 'Synthese', Helvetica, Arial, sans-serif;
+  font-stretch: normal;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 60px;
+  font-style: normal;
+  letter-spacing: 0em;
+  text-transform: uppercase;
+  color: #212121;
+  text-align: right;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *
+ *  DISPLAYS
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+/* Cover display */
+.libe-insta-slide__cover-display {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 45%;
+  width: 100%;
+}
+
+.libe-insta-slide__cover-display
+  .libe-insta-slide__icon-title {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    width: 448px;
+    height: 160px;
+}
+
+.libe-insta-slide__cover-display
+  .libe-insta-slide__text-panel {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -12px;
+    width: -webkit-fit-content;
+    width: fit-content;
+}
+
+/* Image and text display */
+.libe-insta-slide__image-and-text-display {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 100%;
+}
+
+.libe-insta-slide__image-and-text-display
+  .libe-insta-slide__image {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 54px;
+    width: -webkit-fit-content;
+    width: fit-content;
+}
+
+.libe-insta-slide__image-and-text-display
+  .libe-insta-slide__label-title {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 36px;
+    width: -webkit-fit-content;
+    width: fit-content;
+}
+
+/* Quote on background image display */
+.libe-insta-slide__quote-on-bg-image-display {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 100%;
+}
+
+.libe-insta-slide__quote-on-bg-image-display
+  .libe-insta-slide__quote-sign {
+    position: relative;
+    top: 0;
+}
+
+.libe-insta-slide__quote-on-bg-image-display
+  .libe-insta-slide__quote-sign img {
+    position: absolute;
+    left: -26px;
+    top: -80px;
+}
+
+.libe-insta-slide__quote-on-bg-image-display
+  .libe-insta-slide__quote-and-author {
+    position: relative;
+}
+
+.libe-insta-slide__quote-on-bg-image-display
+  .libe-insta-slide__quote {
+    margin-bottom: 100px;
+}
+
+/* Text on background image display */
+.libe-insta-slide__text-on-bg-image-display {
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 100%;
+}
+
+.libe-insta-slide__text-on-bg-image-display
+  .libe-insta-slide__text-panel {
+    margin-left: auto;
+    margin-right: auto;
+    width: -webkit-fit-content;
+    width: fit-content;
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ *
+ *  MODIFIERS
+ *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+/* Default */
 .libe-insta-slide__cover-display,
 .libe-insta-slide__image-and-text-display,
 .libe-insta-slide__bg-image-display,
@@ -58,22 +303,48 @@ html, body { padding: 0; margin: 0; }
   display: none;
 }
 
+/* Cover display */
+.libe-insta-slide.libe-insta-slide_cover-display
+  .libe-insta-slide__safe-zone {
+    height: 1620px;
+}
+
 .libe-insta-slide.libe-insta-slide_cover-display
   .libe-insta-slide__cover-display {
     display: block;
 }
 
+.libe-insta-slide.libe-insta-slide_cover-display
+  .libe-insta-slide__icon-signature {
+    display: none;
+}
+
+/* Image and text display */
 .libe-insta-slide.libe-insta-slide_image-and-text-display
   .libe-insta-slide__background-images {
     display: none;
-  }
+}
+
+.libe-insta-slide.libe-insta-slide_image-and-text-display
   .libe-insta-slide__image-and-text-display {
     display: block;
 }
 
+/* Background image display */
 .libe-insta-slide.libe-insta-slide_bg-image-display
   .libe-insta-slide__bg-image-display {
     display: block;
+}
+
+/* Quote on background image display */
+.libe-insta-slide.libe-insta-slide_quote-on-bg-image-display
+  .libe-insta-slide__safe-zone {
+    overflow: initial;
+}
+
+.libe-insta-slide.libe-insta-slide_quote-on-bg-image-display
+  .libe-insta-slide__background-images {
+    opacity: 0.3;
 }
 
 .libe-insta-slide.libe-insta-slide_quote-on-bg-image-display
@@ -81,8 +352,13 @@ html, body { padding: 0; margin: 0; }
     display: block;
 }
 
+/* Text on background image display */
+.libe-insta-slide.libe-insta-slide_text-on-bg-image-display
+  .libe-insta-slide__background-images {
+    opacity: 0.3;
+}
+
 .libe-insta-slide.libe-insta-slide_text-on-bg-image-display
   .libe-insta-slide__text-on-bg-image-display {
     display: block;
 }
-
