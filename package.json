@@ -4,7 +4,7 @@
   "private": true,
   "author": "Maxime Fabas <maxime.fabas@pm.me> (https://maximefabas.github.com)",
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "nodemon ./bin/www --ignore './temp'",
     "start-prod": "NODE_ENV=production node ./bin/www",
     "standard": "standard --verbose | snazzy",
     "standard-fix": "standard --fix --verbose | snazzy"
@@ -15,11 +15,11 @@
     "debug": "^4.1.0",
     "express": "^4.16.4",
     "http-errors": "^1.7.1",
-    "moment": "^2.22.2",
     "monk": "^6.0.6",
     "morgan": "^1.9.1",
     "node-zip": "^1.1.1",
     "pug": "^2.0.3",
+    "rimraf": "^2.6.2",
     "uuid": "^3.3.2",
     "webshot": "^0.18.0"
   },
