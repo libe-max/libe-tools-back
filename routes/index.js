@@ -3,7 +3,7 @@ const path = require('path')
 const router = express.Router()
 
 /* GET React app. */
-const clientRoutes = ['/', '/edit/:type/:id', '/components' ]
+const clientRoutes = ['/', '/edit/:type/:id', '/components']
 
 router.get(clientRoutes, (req, res, next) => {
   res.sendFile(
