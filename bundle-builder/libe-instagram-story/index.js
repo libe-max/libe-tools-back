@@ -54,14 +54,13 @@ module.exports = async bundleData => {
     $slide.addClass(`libe-insta-slide_${display}-display`)
     if (title) $titles.html(title.value)
     if (text) $texts.html(text.value)
-    if (image) $images.html(`<img src="${image.src}">`)
+    if (image) $images.html(`<img src="${image.src}" />`)
     if (backgroundImages) {
-      const bgImgHeight = `${100 / (backgroundImages.length || 1)}%`
       $backgroundImages.html(backgroundImages.map(bgImg => {
         const node = cheerio.load('<div></div>')
         node('div').addClass('libe-insta-slide__background-image')
         node('div').css({
-          'height': `${bgImgHeight}`,
+          'height': `${100 / (backgroundImages.length || 1)}%`,
           'background-image': `url('${bgImg.src}')`,
           'background-position': `${bgImg.position || 50}% ${bgImg.position || 50}%`
         })
