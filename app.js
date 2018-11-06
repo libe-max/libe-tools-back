@@ -29,6 +29,19 @@ app.use(express.static(path.join(__dirname, 'client/build')))
 //   else next()
 // })
 
+// Allow requests from http://localhost:3000
+app.use(function(req, res, next) {
+  res.header(
+    'Access-Control-Allow-Origin',
+    'http://localhost:3000'
+  )
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  )
+  next()
+})
+
 // Database
 const db = monk('localhost:27017/libetools')
 app.use((req, res, next) => {
