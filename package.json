@@ -1,8 +1,13 @@
 {
   "name": "libe-tools-back",
   "version": "0.0.0",
+  "description": "",
   "private": true,
   "author": "Maxime Fabas <maxime.fabas@pm.me> (https://maximefabas.github.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/libe-max/libe-tools-back.git"
+  },
   "scripts": {
     "start": "nodemon ./bin/www --ignore './temp'",
     "serve": "NODE_ENV=production node ./bin/www",
@@ -29,6 +34,6 @@
     ]
   },
   "devDependencies": {
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.5"
   }
 }

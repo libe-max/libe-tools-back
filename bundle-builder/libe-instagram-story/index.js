@@ -15,6 +15,7 @@ module.exports = async bundleData => {
   const outputDir = `temp/${processId}`
   const absoluteTempDir = path.join(config.server_root_path, 'temp')
   const absoluteOutputDir = path.join(config.server_root_path, outputDir)
+  const publicOutputDir = `${config.server_public_root_url}/${outputDir}`
   if (!fs.existsSync(absoluteTempDir)) fs.mkdirSync(absoluteTempDir)
   fs.mkdirSync(absoluteOutputDir)
 
@@ -48,20 +49,21 @@ module.exports = async bundleData => {
     const $backgroundImages = $('*[data-property="background-images"]')
 
     // Slide data
-    const { display, title, text, image, backgroundImages } = slideData
+    const { display, title, text, image, backgroundImages, contentPosition } = slideData
 
     // Fill template
     $slide.addClass(`libe-insta-slide_${display}-display`)
+    if (title && title.hidden) $slide.addClass(`libe-insta-slide_hidden-title`)
+    if (contentPosition) $slide.addClass(`libe-insta-slide_content-position_${contentPosition}`)
     if (title) $titles.html(title.value)
     if (text) $texts.html(text.value)
-    if (image) $images.html(`<img src="${image.src}">`)
+    if (image) $images.html(`<img src="${image.src}" />`)
     if (backgroundImages) {
-      const bgImgHeight = `${100 / (backgroundImages.length || 1)}%`
       $backgroundImages.html(backgroundImages.map(bgImg => {
         const node = cheerio.load('<div></div>')
         node('div').addClass('libe-insta-slide__background-image')
         node('div').css({
-          'height': `${bgImgHeight}`,
+          'height': `${100 / (backgroundImages.length || 1)}%`,
           'background-image': `url('${bgImg.src}')`,
           'background-position': `${bgImg.position || 50}% ${bgImg.position || 50}%`
         })
@@ -153,5 +155,6 @@ module.exports = async bundleData => {
     rimraf(absoluteOutputDir, () => {})
   }, 10000)
 
-  return absoluteZipPath
+  const publicZipPath = `${publicOutputDir}/${zipName}`
+  return publicZipPath
 }

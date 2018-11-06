@@ -29,16 +29,6 @@ html, body { padding: 0; margin: 0; }
   background-repeat: no-repeat;
 }
 
-/* Safe zone */
-.libe-insta-slide__safe-zone {
-  overflow: hidden;
-  position: absolute;
-  top: 150px;
-  left: calc(50% - 390px);
-  width: 780px;
-  height: 1452px;
-}
-
 /* Icon signature */
 .libe-insta-slide__icon-signature {
   position: absolute;
@@ -91,7 +81,7 @@ html, body { padding: 0; margin: 0; }
   line-height: 72px;
   font-style: normal;
   letter-spacing: 0.03em;
-  text-transform: uppercase;
+  text-transform: none;
   color: #212121;
   text-align: center;
 }
@@ -99,6 +89,7 @@ html, body { padding: 0; margin: 0; }
 .libe-insta-slide__text-panel_big {
   font-size: 108px;
   line-height: 108px;
+  text-transform: uppercase;
 }
 
 /* Image */
@@ -188,6 +179,7 @@ html, body { padding: 0; margin: 0; }
   left: 50%;
   top: 45%;
   width: 100%;
+  max-width: 780px;
 }
 
 .libe-insta-slide__cover-display
@@ -213,9 +205,10 @@ html, body { padding: 0; margin: 0; }
   position: absolute;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  top: 50%;
+  top: 45%;
   left: 50%;
   width: 100%;
+  max-width: 780px;
 }
 
 .libe-insta-slide__image-and-text-display
@@ -241,9 +234,10 @@ html, body { padding: 0; margin: 0; }
   position: absolute;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  top: 50%;
+  top: 45%;
   left: 50%;
   width: 100%;
+  max-width: 780px;
 }
 
 .libe-insta-slide__quote-on-bg-image-display
@@ -274,9 +268,10 @@ html, body { padding: 0; margin: 0; }
   position: absolute;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  top: 50%;
+  top: 45%;
   left: 50%;
   width: 100%;
+  max-width: 780px;
 }
 
 .libe-insta-slide__text-on-bg-image-display
@@ -304,19 +299,50 @@ html, body { padding: 0; margin: 0; }
 }
 
 /* Cover display */
-.libe-insta-slide.libe-insta-slide_cover-display
-  .libe-insta-slide__safe-zone {
-    height: 1620px;
-}
-
-.libe-insta-slide.libe-insta-slide_cover-display
+.libe-insta-slide_cover-display
   .libe-insta-slide__cover-display {
     display: block;
 }
 
-.libe-insta-slide.libe-insta-slide_cover-display
+.libe-insta-slide_cover-display
   .libe-insta-slide__icon-signature {
     display: none;
+}
+
+.libe-insta-slide_cover-display.libe-insta-slide_hidden-title
+  .libe-insta-slide__icon-signature {
+    display: block;
+}
+
+.libe-insta-slide_cover-display.libe-insta-slide_hidden-title
+  .libe-insta-slide__icon-title {
+    display: none;
+}
+
+.libe-insta-slide_cover-display.libe-insta-slide_hidden-title
+  .libe-insta-slide__text-panel {
+    margin-top: 0px;
+}
+
+.libe-insta-slide_cover-display.libe-insta-slide_content-position_top
+  .libe-insta-slide__cover-display {
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    top: 300px;
+}
+
+.libe-insta-slide_cover-display.libe-insta-slide_content-position_bottom
+  .libe-insta-slide__cover-display {
+    -webkit-transform: translate(-50%, -100%);
+    transform: translate(-50%, -100%);
+    top: 1570px;
+}
+
+.libe-insta-slide_cover-display.libe-insta-slide_hidden-title.libe-insta-slide_content-position_bottom
+  .libe-insta-slide__cover-display {
+    -webkit-transform: translate(-50%, -100%);
+    transform: translate(-50%, -100%);
+    top: 1470px;
 }
 
 /* Image and text display */
@@ -330,6 +356,11 @@ html, body { padding: 0; margin: 0; }
     display: block;
 }
 
+.libe-insta-slide.libe-insta-slide_image-and-text-display.libe-insta-slide_hidden-title
+  .libe-insta-slide__label-title {
+    display: none;
+}
+
 /* Background image display */
 .libe-insta-slide.libe-insta-slide_bg-image-display
   .libe-insta-slide__bg-image-display {
@@ -337,11 +368,6 @@ html, body { padding: 0; margin: 0; }
 }
 
 /* Quote on background image display */
-.libe-insta-slide.libe-insta-slide_quote-on-bg-image-display
-  .libe-insta-slide__safe-zone {
-    overflow: initial;
-}
-
 .libe-insta-slide.libe-insta-slide_quote-on-bg-image-display
   .libe-insta-slide__background-images {
     opacity: 0.3;
@@ -353,11 +379,6 @@ html, body { padding: 0; margin: 0; }
 }
 
 /* Text on background image display */
-.libe-insta-slide.libe-insta-slide_text-on-bg-image-display
-  .libe-insta-slide__background-images {
-    opacity: 0.3;
-}
-
 .libe-insta-slide.libe-insta-slide_text-on-bg-image-display
   .libe-insta-slide__text-on-bg-image-display {
     display: block;
