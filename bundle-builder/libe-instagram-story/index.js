@@ -15,6 +15,7 @@ module.exports = async bundleData => {
   const outputDir = `temp/${processId}`
   const absoluteTempDir = path.join(config.server_root_path, 'temp')
   const absoluteOutputDir = path.join(config.server_root_path, outputDir)
+  const publicOutputDir = `${config.server_public_root_url}/${outputDir}`
   if (!fs.existsSync(absoluteTempDir)) fs.mkdirSync(absoluteTempDir)
   fs.mkdirSync(absoluteOutputDir)
 
@@ -48,10 +49,12 @@ module.exports = async bundleData => {
     const $backgroundImages = $('*[data-property="background-images"]')
 
     // Slide data
-    const { display, title, text, image, backgroundImages } = slideData
+    const { display, title, text, image, backgroundImages, contentPosition } = slideData
 
     // Fill template
     $slide.addClass(`libe-insta-slide_${display}-display`)
+    if (title && title.hidden) $slide.addClass(`libe-insta-slide_hidden-title`)
+    if (contentPosition) $slide.addClass(`libe-insta-slide_content-position_${contentPosition}`)
     if (title) $titles.html(title.value)
     if (text) $texts.html(text.value)
     if (image) $images.html(`<img src="${image.src}" />`)
@@ -152,5 +155,6 @@ module.exports = async bundleData => {
     rimraf(absoluteOutputDir, () => {})
   }, 10000)
 
-  return absoluteZipPath
+  const publicZipPath = `${publicOutputDir}/${zipName}`
+  return publicZipPath
 }
