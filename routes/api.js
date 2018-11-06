@@ -144,10 +144,9 @@ router.get('/build/:id', (req, res, next) => {
   collection.findOne({_id: id}, async (e, doc) => {
     if (e) return res.json({err: e, data: null})
     try {
-      const built = await build(doc)
-      res.sendFile(built)
+      const builtPath = await build(doc)
+      res.json({err: null, data: builtPath})
     } catch (err) {
-      console.error(err)
       res.json({err: err, data: null})
     }
   })
