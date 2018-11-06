@@ -22,7 +22,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'client/build')))
 
 // Allow requests from http://localhost:3000
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header(
     'Access-Control-Allow-Origin',
     'http://localhost:3000')
