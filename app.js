@@ -21,24 +21,14 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'client/build')))
 
-// Simulate latency
-// app.use((req, res, next) => {
-//   const delay = Math.floor(Math.random() * 800) + 200
-//   const envIsDev = req.app.get('env') === 'development'
-//   if (envIsDev) setTimeout(next, delay)
-//   else next()
-// })
-
 // Allow requests from http://localhost:3000
 app.use(function(req, res, next) {
   res.header(
     'Access-Control-Allow-Origin',
-    'http://localhost:3000'
-  )
+    'http://localhost:3000')
   res.header(
     'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  )
+    'Origin, X-Requested-With, Content-Type, Accept')
   next()
 })
 
