@@ -1,9 +1,8 @@
 {
-  "main.js": "static/js/main.96e1f7c0.js",
-  "main.js.map": "static/js/main.96e1f7c0.js.map",
-  "static/media/bg-image-placeholder.svg": "static/media/bg-image-placeholder.38ec573b.svg",
-  "static/media/libe-icon-no-borders-outline.svg": "static/media/libe-icon-no-borders-outline.0913eeac.svg",
-  "static/media/libe-icon-no-borders.svg": "static/media/libe-icon-no-borders.6e41cba7.svg",
-  "static/media/libe-icon.svg": "static/media/libe-icon.5b6949aa.svg",
-  "static/media/libe-quote-sign.svg": "static/media/libe-quote-sign.f03cb726.svg"
+  "main.js": "static/js/main.bad09803.js",
+  "main.js.map": "static/js/main.bad09803.js.map",
+  "static/media/bg-image-placeholder.svg": "static/media/bg-image-placeholder.031d5a71.svg",
+  "static/media/image-placeholder.svg": "static/media/image-placeholder.e1f4a97b.svg",
+  "static/media/libe-quote-sign.png": "static/media/libe-quote-sign.c062c0be.png",
+  "static/media/no-display-bg-placeholder.svg": "static/media/no-display-bg-placeholder.d753541f.svg"
 }
