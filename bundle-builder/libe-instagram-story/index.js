@@ -47,14 +47,39 @@ module.exports = async bundleData => {
     const $texts = $('[data-property="text"]')
     const $images = $('[data-property="image"]')
     const $backgroundImages = $('*[data-property="background-images"]')
+    const $coverDisplayBlock = $('.libe-insta-slide__cover-display')
+    const $textOnBgImgDisplayBlock = $('.libe-insta-slide__text-on-bg-image-display')
 
     // Slide data
     const { display, title, text, image, backgroundImages, contentPosition } = slideData
 
     // Assign display type class modifier
     $slide.addClass(`libe-insta-slide_${display}-display`)
-    // If necessary, assign content position class modifier
-    if (contentPosition) $slide.addClass(`libe-insta-slide_content-position_${contentPosition}`)
+    // Position the content
+    const coverContentPosStyle = (() => {
+      if (typeof parseInt(contentPosition, 10) !== 'number') return {}
+      return {
+        top: `${contentPosition / 100 * (1770 - 150) + 150}px`,
+        transform: `translate(-50%, -${contentPosition}%)`
+      }
+    })()
+    const nonCoverContentPosStyle = (() => {
+      if (typeof parseInt(contentPosition, 10) !== 'number') return {}
+      return {
+        top: `${contentPosition / 100 * (1600 - 150) + 150}px`,
+        transform: `translate(-50%, -${contentPosition}%)`
+      }
+    })()
+    $coverDisplayBlock.css({
+      top: coverContentPosStyle.top,
+      transform: coverContentPosStyle.transform,
+      '-webkit-transform': coverContentPosStyle.transform
+    })
+    $textOnBgImgDisplayBlock.css({
+      top: nonCoverContentPosStyle.top,
+      transform: nonCoverContentPosStyle.transform,
+      '-webkit-transform': nonCoverContentPosStyle.transform
+    })
     // If necessary, assign hidden title class modifier
     if (title && title.hidden) $slide.addClass(`libe-insta-slide_hidden-title`)
     // Inject the title
@@ -118,7 +143,7 @@ module.exports = async bundleData => {
     const input = `${config.server_local_root_url}/${outputTemplateHtml}`
     const output = path.join(
       config.server_root_path,
-      `${outputDir}/${i}.png`
+      `${outputDir}/${i}.jpg`
     )
     const options = {
       siteType: 'url',
@@ -148,7 +173,7 @@ module.exports = async bundleData => {
   // Zip the images
   const zip = new Zipper()
   screenshots.map((screenshotPath, i) => zip.file(
-    `${i}.png`, fs.readFileSync(screenshotPath)
+    `${i}.jpg`, fs.readFileSync(screenshotPath)
   ))
   const zipped = zip.generate({
     base64: false,
