@@ -142,7 +142,7 @@ html, body { padding: 0; margin: 0; }
 /* Quote sign */
 .libe-insta-slide__quote-sign {
   width: 360px;
-  opacity: 0.9;
+  opacity: 0.5;
   mix-blend-mode: multiply;
 }
 
@@ -322,27 +322,6 @@ html, body { padding: 0; margin: 0; }
 .libe-insta-slide_cover-display.libe-insta-slide_hidden-title
   .libe-insta-slide__text-panel {
     margin-top: 0px;
-}
-
-.libe-insta-slide_cover-display.libe-insta-slide_content-position_top
-  .libe-insta-slide__cover-display {
-    -webkit-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
-    top: 300px;
-}
-
-.libe-insta-slide_cover-display.libe-insta-slide_content-position_bottom
-  .libe-insta-slide__cover-display {
-    -webkit-transform: translate(-50%, -100%);
-    transform: translate(-50%, -100%);
-    top: 1570px;
-}
-
-.libe-insta-slide_cover-display.libe-insta-slide_hidden-title.libe-insta-slide_content-position_bottom
-  .libe-insta-slide__cover-display {
-    -webkit-transform: translate(-50%, -100%);
-    transform: translate(-50%, -100%);
-    top: 1470px;
 }
 
 /* Image and text display */
