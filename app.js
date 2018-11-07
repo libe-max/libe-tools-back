@@ -4,6 +4,7 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const monk = require('monk')
+const config = require('./.config')
 
 const indexRouter = require('./routes/index')
 const apiRouter = require('./routes/api')
@@ -33,7 +34,10 @@ app.use(function (req, res, next) {
 })
 
 // Database
-const db = monk('localhost:27017/libetools')
+const db = monk(config.env === 'PROD'
+  ? config.db_public_url
+  : config.db_local_url
+)
 app.use((req, res, next) => {
   req.db = db
   next()
