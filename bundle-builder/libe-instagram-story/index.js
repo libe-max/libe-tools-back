@@ -51,13 +51,25 @@ module.exports = async bundleData => {
     // Slide data
     const { display, title, text, image, backgroundImages, contentPosition } = slideData
 
-    // Fill template
+    // Assign display type class modifier
     $slide.addClass(`libe-insta-slide_${display}-display`)
-    if (title && title.hidden) $slide.addClass(`libe-insta-slide_hidden-title`)
+    // If necessary, assign content position class modifier
     if (contentPosition) $slide.addClass(`libe-insta-slide_content-position_${contentPosition}`)
+    // If necessary, assign hidden title class modifier
+    if (title && title.hidden) $slide.addClass(`libe-insta-slide_hidden-title`)
+    // Inject the title
     if (title) $titles.html(title.value)
-    if (text) $texts.html(text.value)
+    // Inject the text with the processed BR tags
+    const textValue = text ? (text.value || '') : ''
+    const bgSplitTextValue = textValue.split(/<br\s?\/?>/i)
+    $texts.html('')
+    bgSplitTextValue.forEach((line, i) => {
+      $texts.append(line)
+      if (i < bgSplitTextValue.length - 1) $texts.append('<br />')
+    })
+    // Inject the image
     if (image) $images.html(`<img src="${image.src}" />`)
+    // Inject the background images
     if (backgroundImages) {
       $backgroundImages.html(backgroundImages.map(bgImg => {
         const node = cheerio.load('<div></div>')
