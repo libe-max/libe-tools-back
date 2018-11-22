@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>duplicate-icon-24</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M10,8 L17.9581348,8 C19.0627043,8 19.9581348,7.1045695 19.9581348,6 C19.9581348,5.72735637 19.9023898,5.45759165 19.7943246,5.20727891 L18.4813535,2.16606857 C18.159719,1.42106244 17.4198052,0.944243234 16.6084722,0.959136424 C7.79782409,1.12086863 3.02751357,2.2599184 2.2975407,4.37628574 C1.77091064,5.90311323 -0.875451073,17.4634706 0.647626545,22.8369712 C0.692985567,22.9970003 2.39244555,23.291684 5.74600648,23.7210223 L5.7460043,23.7210394 C6.8416409,23.8613078 7.84353989,23.0868289 7.98380833,21.9911923 C7.99459183,21.9069624 8,21.8221312 8,21.7372139 L8,10 C8,8.8954305 8.8954305,8 10,8 Z" id="path-1"></path>
+    </defs>
+    <g id="duplicate-icon-24" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" opacity="0.2" fill-rule="nonzero" transform="translate(12.000000, 12.000000) rotate(-180.000000) translate(-12.000000, -12.000000) " x="0" y="0" width="24" height="24"></rect>
+        <g id="Group" transform="translate(-1.000000, -3.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Rectangle" fill-rule="nonzero"></g>
+            <rect id="Rectangle" stroke="#7B7B80" stroke-width="2" fill-rule="nonzero" mask="url(#mask-2)" x="6" y="6" width="11" height="14" rx="2"></rect>
+        </g>
+        <rect id="Rectangle" stroke="#7B7B80" stroke-width="2" fill-rule="nonzero" x="9" y="7" width="11" height="14" rx="2"></rect>
+    </g>
+</svg>

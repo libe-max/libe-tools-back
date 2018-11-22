@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>trash-icon-24</title>
+    <desc>Created with Sketch.</desc>
+    <g id="trash-icon-24" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" fill-rule="nonzero">
+            <rect id="Rectangle" opacity="0.2" x="0" y="0" width="24" height="24"></rect>
+            <g id="Group-2" transform="translate(3.000000, 3.000000)">
+                <path d="M3,6 L3,16 C3,16.5522847 3.44771525,17 4,17 L14,17 C14.5522847,17 15,16.5522847 15,16 L15,6 L3,6 Z" id="Rectangle" stroke="#7B7B80" stroke-width="2"></path>
+                <path d="M7,0 L11,0 C12.1045695,-2.02906125e-16 13,0.8954305 13,2 L13,4 L5,4 L5,2 C5,0.8954305 5.8954305,2.02906125e-16 7,0 Z" id="Rectangle" fill="#7B7B80"></path>
+                <polygon id="Rectangle" fill="#7B7B80" points="5.67185188e-14 2 18 2 18 4 5.67185188e-14 4"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
