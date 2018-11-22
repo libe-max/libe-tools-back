@@ -93,16 +93,18 @@ module.exports = async bundleData => {
       if (i < bgSplitTextValue.length - 1) $texts.append('<br />')
     })
     // Inject the image
-    if (image) $images.html(`<img src="${image.src}" />`)
+    if (image) $images.html(`<img src="${image.src}" alt="Slide illustration" />`)
     // Inject the background images
     if (backgroundImages) {
       $backgroundImages.html(backgroundImages.map(bgImg => {
         const node = cheerio.load('<div></div>')
         node('div').addClass('libe-insta-slide__background-image')
         node('div').css({
-          'height': `${100 / (backgroundImages.length || 1)}%`,
           'background-image': `url('${bgImg.src}')`,
-          'background-position': `${bgImg.position || 50}% ${bgImg.position || 50}%`
+          'background-size': `${bgImg.zoom || 1080}px`,
+          'background-position': `
+            ${bgImg.position.x ? 100 - bgImg.position.x : 50}%
+            ${bgImg.position.y || 50}%`
         })
         return node('body').html()
       }).join(''))

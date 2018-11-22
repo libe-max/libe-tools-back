@@ -11,8 +11,8 @@ const build = require('../bundle-builder/index')
 router.all('/get-all-bundles', (req, res, next) => {
   const collection = req.db.collection('bundles')
   collection.find({}, (e, docs) => !e
-    ? res.json({err: null, data: docs})
-    : res.json({err: e, data: null})
+    ? res.json({ err: null, data: docs })
+    : res.json({ err: e, data: null })
   )
 })
 
@@ -32,9 +32,9 @@ router.all('/get-bundle/:id', (req, res, next) => {
       data: null
     })
   }
-  collection.findOne({_id: id}, (e, doc) => !e
-    ? res.json({err: null, data: doc})
-    : res.json({err: e, data: null})
+  collection.findOne({ _id: id }, (e, doc) => !e
+    ? res.json({ err: null, data: doc })
+    : res.json({ err: e, data: null })
   )
 })
 
@@ -54,8 +54,8 @@ router.all('/create-bundle/:type', (req, res, next) => {
     created_on: now
   }
   collection.insert(newBundle, (e, docs) => !e
-    ? res.json({err: null, data: docs})
-    : res.json({err: e, data: null})
+    ? res.json({ err: null, data: docs })
+    : res.json({ err: e, data: null })
   )
 })
 
@@ -75,7 +75,7 @@ router.put('/save-bundle/:id', (req, res, next) => {
       ...req.body,
       timestamp: now
     }
-  }}
+  } }
   if (!idIsValid) {
     return res.json({
       err: `Requested bundle ID is not valid (${id})`,
@@ -83,9 +83,9 @@ router.put('/save-bundle/:id', (req, res, next) => {
     })
   }
   collection.findOneAndUpdate(
-    {_id: id}, request, (e, doc) => !e
-      ? res.json({err: null, data: doc})
-      : res.json({err: e, data: null})
+    { _id: id }, request, (e, doc) => !e
+      ? res.json({ err: null, data: doc })
+      : res.json({ err: e, data: null })
   )
 })
 
@@ -106,21 +106,21 @@ router.delete('/delete-bundle/:id', (req, res, next) => {
       data: null
     })
   }
-  collection.findOneAndDelete({_id: id}, (e, doc) => {
+  collection.findOneAndDelete({ _id: id }, (e, doc) => {
     if (!doc) {
       return res.json({
         err: `Found no doc with id: ${id}`,
         data: null
       })
     }
-    if (e) return res.json({err: e, data: null})
+    if (e) return res.json({ err: e, data: null })
     const trashed = Object.assign({}, doc, {
       _original_id: doc._id
     })
     delete trashed._id
     trash.insert(trashed, (e, doc) => !e
-      ? res.json({err: null, data: id})
-      : res.json({err: e, data: null})
+      ? res.json({ err: null, data: id })
+      : res.json({ err: e, data: null })
     )
   })
 })
@@ -141,13 +141,13 @@ router.get('/build/:id', (req, res, next) => {
       data: null
     })
   }
-  collection.findOne({_id: id}, async (e, doc) => {
-    if (e) return res.json({err: e, data: null})
+  collection.findOne({ _id: id }, async (e, doc) => {
+    if (e) return res.json({ err: e, data: null })
     try {
       const builtPath = await build(doc)
-      res.json({err: null, data: builtPath})
+      res.json({ err: null, data: builtPath })
     } catch (err) {
-      res.json({err: err, data: null})
+      res.json({ err: err, data: null })
     }
   })
 })
