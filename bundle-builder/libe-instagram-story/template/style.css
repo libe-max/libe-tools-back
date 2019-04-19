@@ -345,6 +345,11 @@ html, body { padding: 0; margin: 0; }
     display: block;
 }
 
+.libe-insta-slide.libe-insta-slide_bg-image-display.libe-insta-slide_hidden-logo
+  .libe-insta-slide__icon-signature {
+    display: none;
+}
+
 /* Quote on background image display */
 .libe-insta-slide.libe-insta-slide_quote-on-bg-image-display
   .libe-insta-slide__background-images {
