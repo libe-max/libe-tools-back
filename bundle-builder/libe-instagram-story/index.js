@@ -51,7 +51,7 @@ module.exports = async bundleData => {
     const $textOnBgImgDisplayBlock = $('.libe-insta-slide__text-on-bg-image-display')
 
     // Slide data
-    const { display, title, text, image, backgroundImages, contentPosition } = slideData
+    const { display, title, text, image, backgroundImages, contentPosition, logo } = slideData
 
     // Assign display type class modifier
     $slide.addClass(`libe-insta-slide_${display}-display`)
@@ -82,6 +82,8 @@ module.exports = async bundleData => {
     })
     // If necessary, assign hidden title class modifier
     if (title && title.hidden) $slide.addClass(`libe-insta-slide_hidden-title`)
+    // If necessary, assign hidden logo class modifier
+    if (logo && logo.hidden) $slide.addClass(`libe-insta-slide_hidden-logo`)
     // Inject the title with the processed BR tags
     const titleValue = title ? (title.value || '') : ''
     const brSplitTitleValue = titleValue.split(/<br\s?\/?>/i)
