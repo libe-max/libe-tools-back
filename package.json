@@ -12,7 +12,11 @@
     "start": "nodemon ./bin/www --ignore './temp'",
     "serve": "NODE_ENV=production node ./bin/www",
     "standard": "standard --verbose | snazzy",
-    "standard-fix": "standard --fix --verbose | snazzy"
+    "standard-fix": "standard --fix --verbose | snazzy",
+    "preinstall": "npx npm-force-resolutions"
+  },
+  "resolutions": {
+    "graceful-fs": "4.2.3"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
